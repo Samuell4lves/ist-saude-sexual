@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IST — O que você precisa saber</title>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nunito:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0D0D0D;
+    --white: #F5F0E8;
+    --yellow: #FFE234;
+    --pink: #FF3D6E;
+    --cyan: #00E5C8;
+    --purple: #7C3AED;
+    --orange: #FF6B35;
+    --green: #22C55E;
+    --blue: #3B82F6;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Nunito', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--black);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(255,62,110,0.18) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(0,229,200,0.15) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(124,58,237,0.1) 0%, transparent 70%);
+  }
+  .hero-tag {
+    background: var(--yellow);
+    color: var(--black);
+    font-weight: 900;
+    font-size: 0.78rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 2px;
+    margin-bottom: 28px;
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+  }
+  .hero h1 {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: clamp(3.5rem, 12vw, 8rem);
+    line-height: 0.92;
+    letter-spacing: -2px;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 10px;
+  }
+  .hero h1 .line1 { color: var(--white); display: block; }
+  .hero h1 .line2 { color: var(--yellow); display: block; }
+  .hero h1 .line3 { color: var(--pink); display: block; }
+  .hero-sub {
+    font-size: 1.1rem;
+    font-weight: 600;
+    opacity: 0.7;
+    margin-top: 24px;
+    max-width: 420px;
+    position: relative;
+    z-index: 1;
+    line-height: 1.6;
+  }
+  .hero-shield {
+    margin-top: 40px;
+    position: relative;
+    z-index: 1;
+    animation: float 3s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+  .scroll-hint {
+    position: absolute;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+    opacity: 0.4;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    z-index: 1;
+    animation: bounce 2s ease-in-out infinite;
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(6px); }
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 80px 24px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 900;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    opacity: 0.5;
+  }
+  .section-title {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    line-height: 1;
+    margin-bottom: 40px;
+  }
+
+  /* ── WHAT IS IST ── */
+  .what-box {
+    background: var(--yellow);
+    color: var(--black);
+    border-radius: 16px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+  .what-box h3 {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 1.8rem;
+    margin-bottom: 14px;
+  }
+  .what-box p { font-size: 1.05rem; font-weight: 600; line-height: 1.7; }
+  .what-deco {
+    position: absolute;
+    right: -20px; bottom: -20px;
+    opacity: 0.12;
+  }
+
+  /* ── IST CARDS GRID ── */
+  .ist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+  .ist-card {
+    border-radius: 14px;
+    padding: 28px 24px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s;
+    cursor: default;
+  }
+  .ist-card:hover { transform: translateY(-4px); }
+  .ist-card .ic-emoji { font-size: 2.4rem; margin-bottom: 12px; display: block; }
+  .ist-card h4 {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 1.4rem;
+    margin-bottom: 4px;
+  }
+  .ist-card .ic-agent {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    opacity: 0.6;
+    margin-bottom: 12px;
+  }
+  .ist-card p { font-size: 0.88rem; line-height: 1.65; font-weight: 600; }
+  .ic-badge {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 0.7rem;
+    font-weight: 900;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .card-hiv    { background: #1a0a2e; border: 2px solid var(--pink); color: #f8d7e3; }
+  .card-hiv h4 { color: var(--pink); }
+  .card-sif    { background: #1a1000; border: 2px solid var(--yellow); color: #fef9d7; }
+  .card-sif h4 { color: var(--yellow); }
+  .card-hpv    { background: #001a18; border: 2px solid var(--cyan); color: #d0faf5; }
+  .card-hpv h4 { color: var(--cyan); }
+  .card-gon    { background: #001020; border: 2px solid var(--blue); color: #d0e8ff; }
+  .card-gon h4 { color: var(--blue); }
+  .card-cla    { background: #100020; border: 2px solid var(--purple); color: #e8d5ff; }
+  .card-cla h4 { color: var(--purple); }
+  .card-her    { background: #1a0800; border: 2px solid var(--orange); color: #ffe5d5; }
+  .card-her h4 { color: var(--orange); }
+  .card-hep    { background: #001a00; border: 2px solid var(--green); color: #d0ffd8; }
+  .card-hep h4 { color: var(--green); }
+  .badge-cure  { background: var(--green); color: #000; }
+  .badge-ctrl  { background: var(--orange); color: #000; }
+  .badge-vac   { background: var(--cyan); color: #000; }
+
+  /* ── TRANSMISSION ── */
+  .trans-section { background: #111; padding: 80px 0; }
+  .trans-inner { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+  .trans-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 40px;
+  }
+  @media (max-width: 580px) { .trans-grid { grid-template-columns: 1fr; } }
+  .trans-card {
+    background: #1a1a1a;
+    border-radius: 14px;
+    padding: 28px;
+    border: 1px solid #333;
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+  }
+  .trans-icon { font-size: 2.2rem; flex-shrink: 0; }
+  .trans-card h4 { font-weight: 900; font-size: 1rem; margin-bottom: 6px; }
+  .trans-card p  { font-size: 0.88rem; opacity: 0.75; line-height: 1.6; }
+
+  /* ── PREVENTION BIG ── */
+  .prev-section { background: var(--purple); }
+  .prev-inner { max-width: 960px; margin: 0 auto; padding: 80px 24px; }
+  .prev-inner .section-title { color: var(--yellow); }
+  .prev-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 40px;
+  }
+  @media (max-width: 680px) { .prev-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 420px) { .prev-grid { grid-template-columns: 1fr; } }
+  .prev-card {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 14px;
+    padding: 24px 20px;
+    text-align: center;
+  }
+  .prev-card .p-icon { font-size: 2.4rem; margin-bottom: 14px; display: block; }
+  .prev-card h4 { font-weight: 900; font-size: 1rem; margin-bottom: 8px; }
+  .prev-card p  { font-size: 0.84rem; opacity: 0.8; line-height: 1.6; }
+
+  /* ── MYTH FACT ── */
+  .myth-section { background: var(--black); }
+  .mf-list { display: flex; flex-direction: column; gap: 16px; margin-top: 40px; }
+  .mf-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  @media (max-width: 560px) { .mf-row { grid-template-columns: 1fr; } }
+  .myth-box, .fact-box {
+    border-radius: 12px;
+    padding: 20px 22px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    line-height: 1.6;
+  }
+  .myth-box {
+    background: rgba(255,62,110,0.1);
+    border: 1.5px solid var(--pink);
+  }
+  .fact-box {
+    background: rgba(34,197,94,0.1);
+    border: 1.5px solid var(--green);
+  }
+  .mf-label {
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    display: block;
+  }
+  .myth-box .mf-label { color: var(--pink); }
+  .fact-box .mf-label { color: var(--green); }
+
+  /* ── I=I BANNER ── */
+  .ii-banner {
+    background: var(--cyan);
+    color: var(--black);
+    padding: 60px 24px;
+    text-align: center;
+  }
+  .ii-banner h2 {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .ii-banner p {
+    font-size: 1.05rem;
+    font-weight: 700;
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* ── TALK CARDS ── */
+  .talk-section { background: #0a0a0a; }
+  .talk-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-top: 40px;
+  }
+  @media (max-width: 560px) { .talk-grid { grid-template-columns: 1fr; } }
+  .talk-card {
+    background: #161616;
+    border: 1px solid #2a2a2a;
+    border-radius: 14px;
+    padding: 24px;
+  }
+  .talk-card .t-topic {
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--yellow);
+    margin-bottom: 10px;
+  }
+  .talk-card p {
+    font-size: 0.93rem;
+    line-height: 1.7;
+    opacity: 0.85;
+    font-weight: 600;
+    font-style: italic;
+  }
+
+  /* ── CTA / SERVICES ── */
+  .cta-section {
+    background: var(--pink);
+    padding: 80px 24px;
+    text-align: center;
+  }
+  .cta-section h2 {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: clamp(2rem, 6vw, 3.8rem);
+    color: var(--black);
+    margin-bottom: 14px;
+    line-height: 1;
+  }
+  .cta-section p {
+    font-size: 1.05rem;
+    color: var(--black);
+    font-weight: 700;
+    max-width: 500px;
+    margin: 0 auto 40px;
+    opacity: 0.85;
+  }
+  .services {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .svc {
+    background: var(--black);
+    color: var(--white);
+    border-radius: 50px;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+  .svc .s-num {
+    background: var(--yellow);
+    color: var(--black);
+    border-radius: 50px;
+    padding: 2px 12px;
+    font-size: 0.9rem;
+    font-weight: 900;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #050505;
+    padding: 32px 24px;
+    text-align: center;
+    font-size: 0.82rem;
+    opacity: 0.5;
+    line-height: 1.8;
+  }
+
+  /* ── ANIMATIONS ── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-tag">Saúde Sexual · Informação é Poder</div>
+  <h1>
+    <span class="line1">SOBRE</span>
+    <span class="line2">IST</span>
+    <span class="line3">A REAL.</span>
+  </h1>
+  <p class="hero-sub">Sem rodeios, sem julgamento. O que você precisa saber para se cuidar de verdade.</p>
+  <div class="hero-shield">
+    <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+      <path d="M60 10 L100 28 L100 65 C100 88 82 105 60 112 C38 105 20 88 20 65 L20 28 Z" fill="none" stroke="#FFE234" stroke-width="3"/>
+      <path d="M60 22 L90 36 L90 65 C90 83 76 96 60 102 C44 96 30 83 30 65 L30 36 Z" fill="rgba(255,226,52,0.08)" stroke="#FFE234" stroke-width="1.5"/>
+      <path d="M45 60 L55 70 L75 50" stroke="#00E5C8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+  <div class="scroll-hint">↓ role para ver</div>
+</div>
+
+<!-- O QUE SÃO ISTs -->
+<section class="fade-in">
+  <div class="section-label">Capítulo 01</div>
+  <div class="section-title">O que é<br><span style="color:var(--cyan)">IST?</span></div>
+
+  <div class="what-box">
+    <div class="what-deco">
+      <svg width="200" height="200" viewBox="0 0 200 200"><circle cx="100" cy="100" r="90" stroke="black" stroke-width="2" fill="none"/><circle cx="100" cy="100" r="60" stroke="black" stroke-width="2" fill="none"/><circle cx="100" cy="100" r="30" stroke="black" stroke-width="2" fill="none"/></svg>
+    </div>
+    <h3>IST = Infecção Sexualmente Transmissível</h3>
+    <p>São infecções causadas por vírus, bactérias ou outros micro-organismos que passam de uma pessoa para outra principalmente pelo sexo — vaginal, anal ou oral — sem proteção.</p>
+    <br>
+    <p>⚡ <strong>Ponto chave:</strong> dá pra TER e TRANSMITIR sem sentir nada. Por isso testar é tão importante quanto usar camisinha.</p>
+  </div>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px;">
+    <div style="background:#1a1a1a; border-radius:12px; padding:22px; border-left: 4px solid var(--cyan);">
+      <div style="font-size:1.8rem; margin-bottom:10px;">🧬</div>
+      <h4 style="font-weight:900; margin-bottom:8px;">Antigo nome: DST</h4>
+      <p style="font-size:0.88rem; opacity:0.75; line-height:1.6;">Hoje falamos IST porque a pessoa pode ter a infecção e não ter doença aparente — mas pode transmitir.</p>
+    </div>
+    <div style="background:#1a1a1a; border-radius:12px; padding:22px; border-left: 4px solid var(--yellow);">
+      <div style="font-size:1.8rem; margin-bottom:10px;">💊</div>
+      <h4 style="font-weight:900; margin-bottom:8px;">A maioria tem tratamento</h4>
+      <p style="font-size:0.88rem; opacity:0.75; line-height:1.6;">Saber é poder. Diagnosticar cedo = tratamento mais fácil, menos risco para você e para quem você ama.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ISTs PRINCIPAIS -->
+<div style="background:#080808; padding: 20px 0;">
+<section class="fade-in">
+  <div class="section-label">Capítulo 02</div>
+  <div class="section-title">As principais<br><span style="color:var(--pink)">ISTs</span></div>
+
+  <div class="ist-grid">
+
+    <div class="ist-card card-hiv">
+      <span class="ic-emoji">🔴</span>
+      <h4>HIV / AIDS</h4>
+      <div class="ic-agent">Vírus · Retrovírus</div>
+      <p>Ataca o sistema imunológico. Com tratamento moderno (TARV), a pessoa vive bem e pode ter carga viral indetectável. Indetectável = não transmite. ✊</p>
+      <span class="ic-badge badge-ctrl">Controlável</span>
+    </div>
+
+    <div class="ist-card card-sif">
+      <span class="ic-emoji">🟡</span>
+      <h4>Sífilis</h4>
+      <div class="ic-agent">Bactéria · Treponema pallidum</div>
+      <p>Passa por fases: começa com uma ferida indolor e pode causar manchas na pele e danos graves se não tratar. Cura com penicilina. Casos aumentando muito no Brasil.</p>
+      <span class="ic-badge badge-cure">Tem cura</span>
+    </div>
+
+    <div class="ist-card card-hpv">
+      <span class="ic-emoji">🟢</span>
+      <h4>HPV</h4>
+      <div class="ic-agent">Vírus · Papilomavírus</div>
+      <p>Causa verrugas genitais e pode levar ao câncer. 80% das pessoas terão contato ao longo da vida. A vacina está disponível grátis no SUS — se não tomou, corre!</p>
+      <span class="ic-badge badge-vac">Vacina no SUS</span>
+    </div>
+
+    <div class="ist-card card-gon">
+      <span class="ic-emoji">🔵</span>
+      <h4>Gonorreia</h4>
+      <div class="ic-agent">Bactéria · Neisseria gonorrhoeae</div>
+      <p>Corrimento com pus, ardência ao urinar. Em mulheres pode ser silenciosa e causar infertilidade se não tratar. Tratada com antibióticos.</p>
+      <span class="ic-badge badge-cure">Tem cura</span>
+    </div>
+
+    <div class="ist-card card-cla">
+      <span class="ic-emoji">🟣</span>
+      <h4>Clamídia</h4>
+      <div class="ic-agent">Bactéria intracelular · Chlamydia</div>
+      <p>A IST mais comum do mundo. 70% das mulheres e 50% dos homens não sentem nada. Pode causar infertilidade silenciosamente. Cura com antibiótico simples.</p>
+      <span class="ic-badge badge-cure">Tem cura</span>
+    </div>
+
+    <div class="ist-card card-her">
+      <span class="ic-emoji">🟠</span>
+      <h4>Herpes Genital</h4>
+      <div class="ic-agent">Vírus · HSV-2 / HSV-1</div>
+      <p>Causa feridas/bolhas que aparecem e somem. O vírus fica no corpo, mas crises são controladas com medicamento. Pode transmitir mesmo sem lesão visível.</p>
+      <span class="ic-badge badge-ctrl">Controlável</span>
+    </div>
+
+    <div class="ist-card card-hep" style="grid-column: span 1;">
+      <span class="ic-emoji">🟤</span>
+      <h4>Hepatite B e C</h4>
+      <div class="ic-agent">Vírus · VHB e VHC</div>
+      <p>Transmitidas pelo sangue e secreções. Hepatite B tem vacina grátis no SUS. Hepatite C tem cura com medicamentos antivirais modernos. Sem tratamento, pode causar cirrose.</p>
+      <span class="ic-badge badge-vac">Hep. B: vacina</span>
+      <span class="ic-badge badge-cure" style="margin-left:4px;">Hep. C: cura</span>
+    </div>
+
+  </div>
+</section>
+</div>
+
+<!-- TRANSMISSÃO -->
+<div class="trans-section">
+<div class="trans-inner fade-in">
+  <div class="section-label">Capítulo 03</div>
+  <div class="section-title" style="color:var(--white)">Como<br><span style="color:var(--orange)">se pega?</span></div>
+  <div class="trans-grid">
+    <div class="trans-card">
+      <div class="trans-icon">💑</div>
+      <div>
+        <h4>Contato sexual</h4>
+        <p>Vaginal, anal ou oral sem camisinha. A principal via de transmissão de ISTs.</p>
+      </div>
+    </div>
+    <div class="trans-card">
+      <div class="trans-icon">💉</div>
+      <div>
+        <h4>Sangue</h4>
+        <p>Compartilhar seringas, cortes com objetos contaminados. Risco alto para HIV e hepatites.</p>
+      </div>
+    </div>
+    <div class="trans-card">
+      <div class="trans-icon">🤰</div>
+      <div>
+        <h4>Mãe para o bebê</h4>
+        <p>Durante gravidez, parto ou amamentação (HIV, sífilis, hepatite B, herpes). Por isso o pré-natal é fundamental.</p>
+      </div>
+    </div>
+    <div class="trans-card">
+      <div class="trans-icon">👆</div>
+      <div>
+        <h4>Contato com lesões</h4>
+        <p>Herpes, sífilis e HPV podem ser transmitidos pelo contato direto com a pele ou mucosa lesionada, mesmo sem penetração.</p>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:28px; background:#222; border-radius:12px; padding:22px 26px; border-left: 4px solid var(--cyan);">
+    <p style="font-weight:700; font-size:0.97rem; opacity:0.9; line-height:1.7;">
+      🚫 <strong>Não se pega por:</strong> abraço, aperto de mão, sentar no vaso sanitário, piscina, talheres ou mosquito. Essas são fake news clássicas!
+    </p>
+  </div>
+</div>
+</div>
+
+<!-- PREVENÇÃO -->
+<div class="prev-section">
+<div class="prev-inner fade-in">
+  <div class="section-label" style="opacity:0.7">Capítulo 04</div>
+  <div class="section-title">Como se<br>proteger?</div>
+  <div class="prev-grid">
+    <div class="prev-card">
+      <span class="p-icon">🛡️</span>
+      <h4>Camisinha Masculina</h4>
+      <p>Protege de ISTs E gravidez. Grátis no SUS. Use sempre, do começo ao fim.</p>
+    </div>
+    <div class="prev-card">
+      <span class="p-icon">💜</span>
+      <h4>Camisinha Feminina</h4>
+      <p>Mesma proteção, mais autonomia. Você coloca antes, sem depender do parceiro.</p>
+    </div>
+    <div class="prev-card">
+      <span class="p-icon">💊</span>
+      <h4>PrEP</h4>
+      <p>Comprimido diário que previne HIV. Grátis no SUS para maiores de 15 anos.</p>
+    </div>
+    <div class="prev-card">
+      <span class="p-icon">⏱️</span>
+      <h4>PEP (Emergência)</h4>
+      <p>Tomou risco? Vá ao PS em até 72h. Medicamento que evita HIV pós-exposição.</p>
+    </div>
+    <div class="prev-card">
+      <span class="p-icon">💉</span>
+      <h4>Vacinas</h4>
+      <p>HPV e Hepatite B: gratuitas no SUS. Se não tomou ainda, agende agora!</p>
+    </div>
+    <div class="prev-card">
+      <span class="p-icon">🧪</span>
+      <h4>Teste Regular</h4>
+      <p>Testar faz parte do autocuidado. Grátis nos postos de saúde e CTAs da cidade.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- I = I BANNER -->
+<div class="ii-banner fade-in">
+  <h2>INDETECTÁVEL<br>= INTRANSMISSÍVEL</h2>
+  <p>Uma pessoa com HIV que faz tratamento e tem carga viral indetectável não transmite o vírus. HIV hoje não é mais sentença de morte — é uma condição controlável.</p>
+</div>
+
+<!-- MITOS E VERDADES -->
+<section class="fade-in">
+  <div class="section-label">Capítulo 05</div>
+  <div class="section-title">Mitos vs.<br><span style="color:var(--green)">Verdades</span></div>
+
+  <div class="mf-list">
+    <div class="mf-row">
+      <div class="myth-box"><span class="mf-label">❌ Mito</span>"Dá pra ver se alguém tem IST pela aparência."</div>
+      <div class="fact-box"><span class="mf-label">✅ Verdade</span>A maioria não tem sintoma visível. Não existe como saber olhando. Só o teste confirma.</div>
+    </div>
+    <div class="mf-row">
+      <div class="myth-box"><span class="mf-label">❌ Mito</span>"Sexo oral não transmite nada."</div>
+      <div class="fact-box"><span class="mf-label">✅ Verdade</span>Gonorreia, sífilis, herpes, HPV e HIV podem ser transmitidos pelo sexo oral. Camisinha e protetor bucal protegem.</div>
+    </div>
+    <div class="mf-row">
+      <div class="myth-box"><span class="mf-label">❌ Mito</span>"Só quem tem muitos parceiros pega IST."</div>
+      <div class="fact-box"><span class="mf-label">✅ Verdade</span>Basta uma única relação desprotegida. Não é quantidade — é proteção.</div>
+    </div>
+    <div class="mf-row">
+      <div class="myth-box"><span class="mf-label">❌ Mito</span>"HIV é coisa de gay."</div>
+      <div class="fact-box"><span class="mf-label">✅ Verdade</span>HIV infecta qualquer pessoa. Cresce entre jovens heterossexuais no Brasil. O risco é a exposição sem proteção.</div>
+    </div>
+    <div class="mf-row">
+      <div class="myth-box"><span class="mf-label">❌ Mito</span>"Pílula protege de IST."</div>
+      <div class="fact-box"><span class="mf-label">✅ Verdade</span>Pílula previne gravidez, não IST. O ideal é pílula + camisinha = dupla proteção.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FRASES PARA A RODA -->
+<div class="talk-section">
+<section class="fade-in">
+  <div class="section-label">Para refletir</div>
+  <div class="section-title">Pra pensar<br><span style="color:var(--yellow)">junto</span></div>
+  <div class="talk-grid">
+    <div class="talk-card">
+      <div class="t-topic">Sobre Testar</div>
+      <p>"Fazer o teste não é coisa de quem tem muitos parceiros. É coisa de quem se cuida. Igual ir ao dentista — você não espera doer."</p>
+    </div>
+    <div class="talk-card">
+      <div class="t-topic">Sobre Camisinha</div>
+      <p>"Usar camisinha não é falta de confiança. É respeito por você e pela outra pessoa. E é grátis no postinho."</p>
+    </div>
+    <div class="talk-card">
+      <div class="t-topic">Sobre Diagnóstico</div>
+      <p>"Descobrir que tem IST não é o fim. O problema é não saber e não tratar. Quem testa e cuida de si está sendo corajoso."</p>
+    </div>
+    <div class="talk-card">
+      <div class="t-topic">Sobre Estigma</div>
+      <p>"Ter IST não diz nada sobre o caráter de alguém. Pode acontecer com qualquer pessoa sexualmente ativa."</p>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- CTA -->
+<div class="cta-section fade-in">
+  <h2>ONDE<br>BUSCAR AJUDA?</h2>
+  <p>Tudo grátis, sigiloso e sem julgamento no SUS.</p>
+  <div class="services">
+    <div class="svc"><span class="s-num">136</span> Disque Saúde · 24h</div>
+    <div class="svc"><span class="s-num">188</span> CVV · Apoio Emocional</div>
+    <div class="svc">🏥 UBS — testes grátis</div>
+    <div class="svc">💊 PrEP e PEP no SUS</div>
+    <div class="svc">🧪 CTA da sua cidade</div>
+    <div class="svc">🛡️ Camisinha grátis na UBS</div>
+  </div>
+</div>
+
+<footer>
+  Material educativo baseado em evidências · Ministério da Saúde · OMS · 2025<br>
+  Informação é o primeiro passo para se cuidar. Cuide-se. ❤️
+</footer>
+
+<script>
+  // Fade-in on scroll
+  const els = document.querySelectorAll('.fade-in');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  els.forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
