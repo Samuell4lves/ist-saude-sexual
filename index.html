@@ -835,85 +835,6 @@
 </section>
 </div>
 
-<!-- JOGO DE DECISÕES -->
-<div style="background:#0a0520; padding:80px 0;">
-<section class="fade-in" style="max-width:760px; margin:0 auto; padding:0 24px;">
-  <div class="section-label">Interativo</div>
-  <div class="section-title">E se fosse<br><span style="color:var(--purple)">você?</span></div>
-  <p style="color:#aaa; font-size:0.97rem; margin-bottom:36px; max-width:500px; line-height:1.7;">Cenários reais. Cada escolha leva a um caminho diferente. Sem julgamento — só reflexão.</p>
-
-  <div id="game-container">
-    <div id="game-scene" style="background:#12082a; border:1.5px solid #3a1f6e; border-radius:16px; overflow:hidden;">
-      <div style="background:linear-gradient(135deg,#1a0a40,#0d0520); padding:32px;">
-        <div id="game-icon" style="font-size:2.5rem; margin-bottom:16px;">🎭</div>
-        <p id="game-text" style="font-size:1.05rem; font-weight:700; line-height:1.7; margin-bottom:24px;"></p>
-        <div id="game-choices" style="display:flex; flex-direction:column; gap:10px;"></div>
-      </div>
-      <div id="game-result" style="display:none; padding:24px 32px; border-top:1px solid #2a1060;">
-        <div id="game-result-icon" style="font-size:2rem; margin-bottom:10px;"></div>
-        <p id="game-result-text" style="font-size:0.95rem; font-weight:700; line-height:1.7; margin-bottom:16px;"></p>
-        <button id="game-next-btn" style="background:var(--purple); color:#fff; border:none; border-radius:50px; padding:12px 28px; font-size:0.88rem; font-weight:900; font-family:'Nunito',sans-serif; cursor:pointer; letter-spacing:1px; text-transform:uppercase;">PRÓXIMO CENÁRIO →</button>
-      </div>
-    </div>
-    <div style="display:flex; justify-content:center; gap:8px; margin-top:16px;" id="game-dots"></div>
-  </div>
-</section>
-</div>
-
-<!-- CHECKLIST -->
-<div style="background:#001a10; padding:80px 0;">
-<section class="fade-in" style="max-width:760px; margin:0 auto; padding:0 24px;">
-  <div class="section-label">Autocuidado</div>
-  <div class="section-title">Meu check<br><span style="color:var(--green)">list</span></div>
-  <p style="color:#aaa; font-size:0.97rem; margin-bottom:36px; max-width:500px; line-height:1.7;">Marque o que você já faz. Sem julgamento — é só pra você refletir sobre sua saúde sexual.</p>
-
-  <div id="checklist" style="display:flex; flex-direction:column; gap:10px;">
-  </div>
-  <div id="checklist-result" style="margin-top:28px; display:none; background:#0a2018; border:1.5px solid var(--green); border-radius:14px; padding:28px; text-align:center;">
-    <div id="cl-emoji" style="font-size:2.5rem; margin-bottom:12px;"></div>
-    <div id="cl-score" style="font-family:'Black Han Sans',sans-serif; font-size:2rem; color:var(--green); margin-bottom:8px;"></div>
-    <p id="cl-msg" style="font-size:0.95rem; opacity:0.8; line-height:1.6; max-width:400px; margin:0 auto;"></p>
-  </div>
-  <button onclick="calcChecklist()" id="cl-btn" style="margin-top:24px; background:var(--green); color:#000; border:none; border-radius:50px; padding:14px 36px; font-size:0.9rem; font-weight:900; font-family:'Nunito',sans-serif; cursor:pointer; letter-spacing:1px; text-transform:uppercase; width:100%;">VER MEU RESULTADO →</button>
-</section>
-</div>
-
-<!-- CAIXINHA DE PERGUNTAS -->
-<div style="background:#1a0010; padding:80px 0;">
-<section class="fade-in" style="max-width:760px; margin:0 auto; padding:0 24px;">
-  <div class="section-label">Sem vergonha</div>
-  <div class="section-title">Pergunte<br><span style="color:var(--pink)">anônimo</span></div>
-  <p style="color:#aaa; font-size:0.97rem; margin-bottom:36px; max-width:500px; line-height:1.7;">Tem uma dúvida mas ficou com vergonha de perguntar? Escreve aqui — o mediador vai ler e responder pra todo mundo, sem revelar quem perguntou.</p>
-
-  <div style="background:#160010; border:1.5px solid #4a0030; border-radius:16px; padding:32px;">
-    <div id="qbox-form">
-      <textarea id="qbox-input" placeholder="Digite sua pergunta aqui... pode ser qualquer coisa sobre IST, sexo, saúde sexual. Sem julgamento! 💜" style="width:100%; background:#0d000a; border:1.5px solid #3a0025; border-radius:10px; padding:16px; color:#F5F0E8; font-family:'Nunito',sans-serif; font-size:0.95rem; line-height:1.6; resize:vertical; min-height:120px; outline:none;"></textarea>
-      <div style="display:flex; gap:12px; margin-top:14px; flex-wrap:wrap;">
-        <button onclick="submitQuestion()" style="background:var(--pink); color:#fff; border:none; border-radius:50px; padding:12px 28px; font-size:0.88rem; font-weight:900; font-family:'Nunito',sans-serif; cursor:pointer; letter-spacing:1px; text-transform:uppercase; flex:1;">ENVIAR ANÔNIMO 💌</button>
-        <button onclick="clearQuestion()" style="background:transparent; color:#aaa; border:1.5px solid #333; border-radius:50px; padding:12px 24px; font-size:0.88rem; font-weight:700; font-family:'Nunito',sans-serif; cursor:pointer;">LIMPAR</button>
-      </div>
-    </div>
-    <div id="qbox-sent" style="display:none; text-align:center; padding:20px 0;">
-      <div style="font-size:2.5rem; margin-bottom:12px;">✅</div>
-      <p style="font-weight:900; font-size:1.05rem; margin-bottom:6px;">Pergunta enviada!</p>
-      <p style="opacity:0.6; font-size:0.9rem; margin-bottom:18px;">O mediador vai ler e responder durante a roda.</p>
-      <button onclick="newQuestion()" style="background:transparent; color:var(--pink); border:1.5px solid var(--pink); border-radius:50px; padding:10px 24px; font-size:0.85rem; font-weight:700; font-family:'Nunito',sans-serif; cursor:pointer;">FAZER OUTRA PERGUNTA</button>
-    </div>
-    <!-- Fila de perguntas para o mediador -->
-    <div id="qbox-mediador" style="margin-top:24px; display:none;">
-      <div style="border-top:1px solid #330020; padding-top:18px; margin-top:4px;">
-        <p style="font-size:0.75rem; font-weight:900; letter-spacing:2px; text-transform:uppercase; color:#ff3d6e; margin-bottom:12px;">📋 Painel do Mediador</p>
-        <div id="qbox-list" style="display:flex; flex-direction:column; gap:8px;"></div>
-        <button onclick="clearAllQ()" style="margin-top:12px; background:transparent; color:#555; border:1px solid #333; border-radius:50px; padding:8px 20px; font-size:0.78rem; font-weight:700; font-family:'Nunito',sans-serif; cursor:pointer;">LIMPAR TODAS</button>
-      </div>
-    </div>
-    <div style="margin-top:18px; text-align:center;">
-      <button onclick="toggleMediador()" style="background:transparent; color:#444; border:none; font-size:0.75rem; font-family:'Nunito',sans-serif; cursor:pointer; text-decoration:underline;">ver painel do mediador</button>
-    </div>
-  </div>
-</section>
-</div>
-
 <!-- QUIZ -->
 <div style="background: #0a0a0a; padding: 80px 0;">
 <section class="fade-in" style="max-width:760px;">
@@ -991,11 +912,6 @@
       <div style="font-family:'Black Han Sans',sans-serif; font-size:3rem; color:var(--green); line-height:1; margin-bottom:8px;" data-count="700" data-suffix="k+">—</div>
       <p style="font-weight:700; font-size:0.95rem; line-height:1.6;">pessoas vivem com HIV no Brasil e <strong style="color:var(--green)">estão em tratamento</strong> — com vida normal e saudável</p>
     </div>
-  </div>
-  <div style="background:#0d0d0d; border:1.5px solid #1a1a1a; border-radius:14px; padding:28px; position:relative; overflow:hidden;">
-    <div style="position:absolute; top:0; left:0; right:0; height:3px; background:var(--orange);"></div>
-    <div style="font-family:'Black Han Sans',sans-serif; font-size:2.5rem; color:var(--orange); line-height:1; margin-bottom:8px;" data-count="50" data-suffix="%">—</div>
-    <p style="font-weight:700; font-size:0.95rem; line-height:1.6;">das pessoas com clamídia — a IST mais comum do mundo — <strong style="color:var(--orange)">não sabem que têm</strong> porque não sentem nada.</p>
   </div>
 </section>
 </div>
